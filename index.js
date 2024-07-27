@@ -48,7 +48,13 @@ app.post('/products', upload.single('image'), async (req, res) => {
 // Route to display products
 app.get('/products', async (req, res) => {
     try {
-        const products = await Product.find({});
+        let products;
+        if (req.query.search) {
+            const regex = new RegExp(req.query.search, 'i'); // 'i' for case-insensitive
+            products = await Product.find({ name: regex });
+        } else {
+            products = await Product.find({});
+        }
         res.render('products', { products });
     } catch (err) {
         res.status(500).send(err.message);

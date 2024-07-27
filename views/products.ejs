@@ -26,6 +26,13 @@
 <body>
     <div class="container">
         <h2 class="text-center mb-4">Product List</h2>
+        
+        <!-- Search Form -->
+        <form class="form-inline mb-4" method="GET" action="/products">
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search for a product" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
         <table class="table table-striped">
             <thead>
                 <tr>
